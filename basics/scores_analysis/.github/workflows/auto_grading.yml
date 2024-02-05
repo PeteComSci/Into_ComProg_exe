@@ -1,0 +1,19 @@
+name: Auto-Grading for Math Test Scores Analysis
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install pytest
+      run: pip install pytest
+      working-directory: basics/scores_analysis/
+    - name: Run tests with pytest
+      run: pytest test_scores_analysis.py
+      working-directory: basics/scores_analysis/git commit -m "Updated scores_analysis.py and test_scores_analysis.py, added GitHub Actions workflow for auto-grading"
